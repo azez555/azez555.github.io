@@ -463,6 +463,8 @@ button {
   display: flex; 
   align-items: center; 
   gap: .5rem; 
+  cursor: pointer;
+  user-select: none; 
 }
 /* 
     .systems__item: زر فلترة واحد
@@ -485,31 +487,35 @@ button {
 /* 
     .active-filter: فئة زر الفلتر النشط
 */
-
-.systems__container { 
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+.systems__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start; /* لتبدأ البطاقات من اليمين */
 }
-/* 
-    .systems__container: حاوية بطاقات الأنظمة
-    تستخدم شبكة متجاوبة تلقائيًا
-*/
 
-.system__card { 
-  border-radius: 1rem; 
-  overflow: hidden; 
-  position: relative; 
-  background-color: var(--container-color); 
-  box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .08); 
-  transition: transform .4s ease, box-shadow .4s ease; 
+.system__card {
+  /* 1: السماح للبطاقة بالتمدد لتملأ الصف */
+  flex: 1 1 320px; 
+  
+  /* 2: وضع حد أقصى للحجم لكي لا تصبح ضخمة إذا كانت وحيدة */
+  /* يمكنك زيادة الرقم 450px أو نقصه حسب الحجم الذي تراه مناسباً */
+  max-width: 450px; 
+
+  /* التنسيقات الأخرى */
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--container-color);
+  box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .08);
+  
+  /* ملاحظة: تأكد من إزالة أي transition للـ transform من هنا */
+  transition: box-shadow .4s ease; 
 }
-/* 
-    .system__card: بطاقة نظام واحدة
-    تتميز بزوايا دائرية وظل ناعم
-*/
 
-.system__card:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 12px 32px hsla(var(--hue), 30%, 10%, .12); 
+/* تأثير الـ Hover بشكل منفصل لمنع اهتزاز الفلترة */
+.system__card:hover {
+  transform: translateY(-8px);
 }
 /* 
     .system__card:hover: تأثير عند التمرير على البطاقة
@@ -1054,4 +1060,41 @@ html[dir="rtl"] .whatsapp__button { right: 2rem; }
   /* 
       :root: تغيير المتغيرات لزيادة حجم الخطوط على الشاشات الكبيرة
   */
+}
+/*=============== منع التحديد وتحسين المؤشرات في كامل الموقع ===============*/
+
+/* 1. منع التحديد في كل مكان بشكل افتراضي */
+*, *::before, *::after {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Standard syntax */
+    
+    /* إزالة مؤشر الكتابة من كل مكان */
+    cursor: default; 
+}
+
+/* 2. تحديد الأماكن التفاعلية وإعطاؤها مؤشر اليد */
+a, 
+button, 
+.systems__item, 
+.nav__link, 
+.footer__link, 
+i, 
+.button, 
+.modal__close {
+    cursor: pointer !important;
+}
+
+/* استثناء: السماح بتحديد النصوص في المقالات أو الأوصاف الطويلة */
+
+.system__description, .modal__description {
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: auto;
+}
+
+
+/* 4. إزالة اللون الأزرق عند الضغط في المتصفحات (خصوصاً الموبايل) */
+input, textarea, button, a {
+    -webkit-tap-highlight-color: transparent;
 }

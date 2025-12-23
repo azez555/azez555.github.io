@@ -98,8 +98,10 @@
         target: ".system__card",
       },
       animation: {
-        duration: 350,
-        effects: "fade scale(0.95)",
+        duration: 400,
+        effects: "fade scale(0.9)", // إضافة تأثير تصغير بسيط بدلاً من الإزاحة يقلل "القفزات"
+        easing: "ease-in-out",
+        queue: false, // يمنع تراكم الحركات إذا ضغط المستخدم بسرعة
       },
     });
 
@@ -178,9 +180,6 @@
   const initializeScrollReveal = () => {
     if (typeof ScrollReveal === "undefined") return;
 
-    /* 
-        إعدادات افتراضية للتأثيرات
-    */
     const sr = ScrollReveal({
       origin: "bottom",
       distance: "60px",
@@ -191,16 +190,16 @@
       viewFactor: 0.2,
     });
 
-    /* 
-        تطبيق التأثيرات على العناصر المحددة
-    */
     sr.reveal(".point__data");
     sr.reveal(".feature__item", { interval: 200 });
     sr.reveal(".systems__filters", { delay: 300 });
-    sr.reveal(".system__card", { interval: 150 });
+
+    // --- هذا السطر هو سبب المشكلة، قم بحذفه أو جعله تعليقاً ---
+    // sr.reveal(".system__card", { interval: 150 });
+    // --------------------------------------------------------
+
     sr.reveal(".contact__container");
   };
-
   /*
     نقطة البداية الرئيسية:
     يتم استدعاء هذه الوظائف بعد تحميل محتوى الصفحة (DOM)
