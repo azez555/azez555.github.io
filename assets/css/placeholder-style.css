@@ -1,0 +1,104 @@
+/*=============== GOOGLE FONTS ===============*/
+/* 
+    @import: استيراد خط Tajawal من Google Fonts
+*/
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap' );
+
+/*=============== VARIABLES ===============*/
+/* 
+    :root:
+    عنصر الجذر الذي يحتوي على المتغيرات العالمية
+    لضمان تناسق الألوان والخطوط مع الصفحة الرئيسية
+*/
+:root {
+    --hue: 200;
+    --sat: 50%;
+    --first-color: hsl(var(--hue), var(--sat), 58%);
+    --title-color: hsl(var(--hue), 25%, 20%);
+    --body-font: 'Tajawal', sans-serif;
+    --h1-font-size: 2.25rem;
+    --normal-font-size: 1.1rem;
+    --font-bold: 700;
+    --font-black: 900;
+}
+
+/*=============== BASE ===============*/
+/* 
+    تنسيقات أساسية لجسم الصفحة (body)
+    تحدد الخط، الخلفية، وتوسيط المحتوى
+*/
+body {
+    font-family: var(--body-font);
+    background: linear-gradient(160deg, hsl(var(--hue), 50%, 25%, .98), hsl(var(--hue), 80%, 15%, .99));
+    color: #FFF;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding: 1rem;
+}
+
+/*=============== CONTAINER ===============*/
+/* 
+    .container:
+    حاوية المحتوى الرئيسية في وسط الصفحة
+    تتميز بخلفية شبه شفافة وتأثير ضبابي
+*/
+.container {
+    max-width: 600px;
+    padding: 3rem 2rem;
+    background-color: hsla(0, 0%, 100%, 0.05);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+/* 
+    h1:
+    العنوان الرئيسي للصفحة
+*/
+h1 {
+    color: #FFF;
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-black);
+    margin-bottom: 1.5rem;
+}
+
+/* 
+    p:
+    الفقرة النصية التي تشرح الغرض من الصفحة
+*/
+p {
+    font-size: var(--normal-font-size);
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+/*=============== BUTTON ===============*/
+/* 
+    .button:
+    فئة الزر الرئيسي للعودة للصفحة الرئيسية
+    بنفس تصميم أزرار الصفحة الرئيسية
+*/
+.button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(145deg, hsl(var(--hue), 85%, 65%), hsl(var(--hue), 75%, 55%));
+    color: #FFF;
+    text-decoration: none;
+    border-radius: .75rem;
+    font-weight: var(--font-bold);
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 
+    .button:hover:
+    تأثير عند تمرير الفأرة على الزر
+*/
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px hsla(var(--hue), var(--sat), 55%, 0.3);
+}

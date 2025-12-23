@@ -1,0 +1,1057 @@
+/*=============== GOOGLE FONTS ===============*/
+/* 
+    @import: استيراد خط Tajawal من Google Fonts
+    يحمل أوزان مختلفة: 400 (خفيف)، 500 (عادي)، 700 (سميك)، 900 (عريض)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap'  );
+
+/*=============== VARIABLES CSS (UNIFIED & FINAL) ===============*/
+/* 
+    :root:
+    عنصر الجذر الذي يحتوي على المتغيرات العالمية
+    التي تستخدم في جميع أنحاء الملف لضمان التناسق 
+    وعدم التكرار وسهولة التعديل
+*/
+:root {
+  --hue: 200;
+  --sat: 50%;
+  --header-height: 3.5rem;
+  --first-color: hsl(var(--hue), var(--sat), 58%);
+  --first-color-light: hsl(var(--hue), var(--sat), 75%);
+  --first-color-lighten: hsl(var(--hue), var(--sat), 95%);
+  --gradient-color: linear-gradient(145deg, hsl(var(--hue), 85%, 65%), hsl(var(--hue), 75%, 55%));
+  --title-color: hsl(var(--hue), 25%, 20%);
+  --text-color: hsl(var(--hue), 15%, 45%);
+  --text-color-light: hsl(var(--hue), 15%, 65%);
+  --body-color: hsl(var(--hue), 60%, 98%);
+  --container-color: #fff;
+  --border-color: hsl(var(--hue), 30%, 92%);
+  --body-font: 'Tajawal', sans-serif;
+  --biggest-font-size: 3rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+  --font-medium: 500;
+  --font-bold: 700;
+  --font-black: 900;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/*=============== BASE ===============*/
+/* 
+    الأنماط الأساسية (Reset)
+    لإزالة تنسيقات المتصفح الافتراضية وتوحيد المظهر
+*/
+
+*, *::before, *::after { box-sizing: border-box; }
+/* 
+    box-sizing: border-box: يضمن أن padding و border
+    لا يزيدان من العرض أو الارتفاع الإجمالي للعنصر
+*/
+
+html { scroll-behavior: smooth; }
+/* 
+    scroll-behavior: smooth: تفعيل التمرير السلس
+    عند النقر على الروابط الداخلية
+*/
+
+body { 
+  margin: 0; 
+  font-family: var(--body-font); 
+  font-size: var(--normal-font-size); 
+  background-color: var(--body-color); 
+  color: var(--text-color); 
+  text-align: right; 
+}
+/* 
+    تنسيقات أساسية لجسم الصفحة (body)
+    تحدد الخط، الحجم، الألوان، والمحاذاة الافتراضية
+*/
+
+h1, h2, h3, h4 { 
+  color: var(--title-color); 
+  font-weight: var(--font-bold); 
+  margin: 0; 
+}
+/* 
+    تنسيقات موحدة لجميع العناوين
+    تحدد اللون، الوزن، وتزيل الهوامش
+*/
+
+ul { list-style: none; padding: 0; margin: 0; }
+/* 
+    إزالة تنسيقات القوائم الافتراضية
+    (النقاط، الهوامش، والحشو)
+*/
+
+a { text-decoration: none; }
+/* 
+    إزالة الخط السفلي من جميع الروابط
+*/
+
+img { max-width: 100%; height: auto; display: block; }
+/* 
+    جعل الصور متجاوبة بشكل افتراضي
+    وإزالة المسافات البيضاء أسفلها
+*/
+
+button { 
+  font-family: var(--body-font); 
+  border: none; 
+  cursor: pointer; 
+  margin: 0; 
+  padding: 0; 
+  background: none; 
+}
+/* 
+    إعادة تعيين أنماط الأزرار الافتراضية
+    لتوحيد مظهرها عبر المتصفحات
+*/
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+/* 
+    فئات قابلة لإعادة الاستخدام
+    لتطبيق أنماط متكررة بسهولة
+*/
+
+.section { padding: 5rem 0 2rem; }
+/* 
+    .section: فئة للأقسام الرئيسية في الصفحة
+    تضيف مسافة داخلية أعلى وأسفل كل قسم
+*/
+
+.section__title { 
+  font-size: var(--h1-font-size); 
+  font-weight: var(--font-bold); 
+  text-align: center; 
+  margin-bottom: 3rem; 
+}
+/* 
+    .section__title: فئة عناوين الأقسام
+    لتوسيط العنوان وإضافة مسافة سفلية
+*/
+
+.container { 
+  max-width: 1024px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  padding: 0 1.5rem; 
+}
+/* 
+    .container: فئة الحاوية الرئيسية للمحتوى
+    تحدد عرض المحتوى وتوسطه في الصفحة
+*/
+
+.grid { display: grid; gap: 1.5rem; }
+/* 
+    .grid: فئة بسيطة لتفعيل نظام الشبكة (Grid)
+    مع وجود فجوات بين العناصر
+*/
+
+.button { 
+  display: inline-block; 
+  background: var(--gradient-color); 
+  color: #FFF; 
+  padding: 1.1rem 2rem; 
+  border-radius: .75rem; 
+  font-weight: var(--font-bold); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+/* 
+    .button: فئة الزر الأساسي في الموقع
+    يتميز بخلفية متدرجة وتأثير انتقال عند التمرير
+*/
+
+.button:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 10px 25px hsla(var(--hue), var(--sat), 55%, 0.3); 
+}
+/* 
+    .button:hover: تأثير عند تمرير الفأرة على الزر
+    لإعطاء إحساس بالارتفاع
+*/
+
+.button--ghost { 
+  background: transparent; 
+  border: 2px solid var(--first-color); 
+  color: var(--first-color); 
+}
+/* 
+    .button--ghost: فئة لتصميم زر شفاف
+    يتميز بخلفية شفافة وحدود ملونة
+*/
+
+.button--ghost:hover { 
+  background: var(--first-color); 
+  color: #FFF; 
+}
+/* 
+    .button--ghost:hover: تأثير عند التمرير
+    لملء الخلفية وتغيير لون النص
+*/
+
+.button-link { 
+  color: var(--first-color); 
+  font-weight: var(--font-bold); 
+  transition: letter-spacing .3s; 
+}
+/* 
+    .button-link: فئة لتصميم رابط نصي يشبه الزر
+*/
+
+.button-link:hover { letter-spacing: .5px; }
+/* 
+    .button-link:hover: تأثير عند التمرير
+    لزيادة المسافة بين الحروف
+*/
+
+/*=============== HEADER ===============*/
+/* 
+    أنماط الشريط العلوي (Header) وقائمة التنقل
+*/
+
+.header { 
+  width: 100%; 
+  background-color: transparent; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  z-index: var(--z-fixed); 
+  transition: background-color 0.4s, box-shadow 0.4s; 
+}
+/* 
+    .header: الشريط العلوي
+    يتم تثبيته في أعلى الصفحة بخلفية شفافة في البداية
+*/
+
+.nav { 
+  height: var(--header-height); 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+/* 
+    .nav: عنصر التنقل داخل الهيدر
+    يستخدم Flexbox لتوزيع الشعار والقائمة
+*/
+
+.nav__logo { 
+  display: flex; 
+  align-items: center; 
+  gap: .5rem; 
+  color: var(--container-color); 
+  font-weight: var(--font-bold); 
+  font-size: 1.5rem; 
+  transition: color 0.4s; 
+}
+/* 
+    .nav__logo: شعار الموقع
+    يحتوي على الصورة والنص
+*/
+
+.nav__logo-img { width: 32px; }
+/* 
+    .nav__logo-img: صورة الشعار
+    تحديد عرض ثابت للصورة
+*/
+
+.nav__list { display: flex; column-gap: 2rem; }
+/* 
+    .nav__list: قائمة عناصر التنقل
+    لعرض العناصر في صف واحد مع مسافات بينها
+*/
+
+.nav__link { 
+  color: var(--container-color); 
+  font-weight: var(--font-bold); 
+  transition: color 0.3s; 
+}
+/* 
+    .nav__link: روابط القائمة
+    تحديد اللون والوزن الافتراضي
+*/
+
+.nav__link:hover { color: var(--first-color-light); }
+/* 
+    .nav__link:hover: تأثير عند التمرير على الرابط
+*/
+
+.active-link { color: var(--first-color-light) !important; }
+/* 
+    .active-link: فئة الرابط النشط (القسم الحالي)
+*/
+
+.scroll-header { 
+  background-color: hsla(0, 0%, 100%, 0.8); 
+  backdrop-filter: blur(10px); 
+  box-shadow: 0 2px 8px hsla(var(--hue), 20%, 10%, .1); 
+}
+/* 
+    .scroll-header: فئة تضاف للهيدر عند التمرير
+    لإضافة خلفية ضبابية وظل
+*/
+
+.scroll-header .nav__logo, .scroll-header .nav__link { 
+  color: var(--title-color); 
+}
+/* 
+    تغيير لون الشعار والروابط لتكون واضحة على الخلفية البيضاء
+*/
+
+.scroll-header .nav__link:hover { color: var(--first-color); }
+/* 
+    تغيير لون الرابط عند التمرير في حالة الهيدر المتغير
+*/
+
+.scroll-header .active-link { color: var(--first-color) !important; }
+/* 
+    تغيير لون الرابط النشط في حالة الهيدر المتغير
+*/
+
+/*=============== POINT (HERO SECTION) ===============*/
+/* 
+    أنماط قسم الترحيب الرئيسي (Hero Section)
+*/
+
+.point { 
+  background: linear-gradient(160deg, hsl(var(--hue), 50%, 25%, .98), hsl(var(--hue), 80%, 15%, .99)); 
+  height: 90vh; 
+  display: grid; 
+  place-items: center; 
+}
+/* 
+    .point: قسم الترحيب
+    يتميز بخلفية متدرجة داكنة وتوسيط للمحتوى
+*/
+
+.point__container { text-align: center; }
+/* 
+    .point__container: حاوية المحتوى
+    لتوسيط كل النصوص داخلها
+*/
+
+.point__title { 
+  font-size: var(--biggest-font-size); 
+  font-weight: var(--font-black); 
+  color: #FFF; 
+  margin-bottom: 1rem; 
+  line-height: 1.2; 
+}
+/* 
+    .point__title: عنوان الترحيب الرئيسي
+    يتميز بحجم ووزن خط كبيرين
+*/
+
+.point__description { 
+  font-size: var(--h2-font-size); 
+  color: hsl(var(--hue), 30%, 85%); 
+  margin-bottom: 2.5rem; 
+}
+/* 
+    .point__description: وصف الترحيب
+*/
+
+.point__description strong { 
+  color: var(--first-color-light); 
+  font-weight: var(--font-black); 
+}
+/* 
+    .point__description strong: تمييز النص المهم داخل الوصف
+*/
+
+/*=============== FEATURES ===============*/
+/* 
+    أنماط قسم الميزات
+*/
+
+.features { 
+  background-color: var(--container-color); 
+  padding: 6rem 0; 
+}
+/* 
+    .features: قسم الميزات
+    يتميز بخلفية بيضاء ومسافة داخلية كبيرة
+*/
+
+.features__grid { display: grid; gap: 5rem; }
+/* 
+    .features__grid: شبكة الميزات
+    لترتيب عناصر الميزات مع مسافة كبيرة بينها
+*/
+
+.feature__item { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  align-items: center; 
+  gap: 3rem; 
+}
+/* 
+    .feature__item: بطاقة ميزة واحدة
+    تحتوي على المحتوى والصورة
+*/
+
+.feature__tag { 
+  display: inline-block; 
+  background: var(--gradient-color); 
+  color: #FFF; 
+  padding: .35rem .85rem; 
+  border-radius: .25rem; 
+  font-size: var(--small-font-size); 
+  font-weight: var(--font-bold); 
+  margin-bottom: 1rem; 
+}
+/* 
+    .feature__tag: شارة صغيرة فوق عنوان الميزة
+*/
+
+.feature__title { 
+  font-size: var(--h1-font-size); 
+  font-weight: var(--font-black); 
+  margin-bottom: 1rem; 
+}
+/* 
+    .feature__title: عنوان الميزة
+*/
+
+.feature__description { line-height: 1.7; }
+/* 
+    .feature__description: وصف الميزة
+    مع زيادة ارتفاع السطر لتحسين القراءة
+*/
+
+.feature__image { 
+  border-radius: .75rem; 
+  overflow: hidden; 
+  box-shadow: 0 16px 48px hsla(var(--hue), 30%, 8%, .15); 
+}
+/* 
+    .feature__image: حاوية صورة الميزة
+    تتميز بزوايا دائرية وظل عميق
+*/
+
+/*=============== SYSTEMS ===============*/
+/* 
+    أنماط قسم الأنظمة
+*/
+
+.systems__filters { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: .75rem; 
+  margin-bottom: 3rem; 
+  flex-wrap: wrap; 
+}
+/* 
+    .systems__filters: حاوية أزرار الفلترة
+    للسماح للمستخدم بتصفية الأنظمة
+*/
+
+.systems__item { 
+  cursor: pointer; 
+  padding: .75rem 1.5rem; 
+  border-radius: .5rem; 
+  font-weight: var(--font-bold); 
+  color: var(--title-color); 
+  background-color: var(--container-color); 
+  border: 2px solid var(--border-color); 
+  transition: all .3s; 
+  display: flex; 
+  align-items: center; 
+  gap: .5rem; 
+}
+/* 
+    .systems__item: زر فلترة واحد
+    يحتوي على أيقونة ونص
+*/
+
+.systems__item:hover { 
+  background-color: hsl(var(--hue), 30%, 95%); 
+  transform: translateY(-2px); 
+}
+/* 
+    .systems__item:hover: تأثير عند التمرير
+*/
+
+.active-filter { 
+  background: var(--gradient-color); 
+  color: #FFF; 
+  border-color: transparent; 
+}
+/* 
+    .active-filter: فئة زر الفلتر النشط
+*/
+
+.systems__container { 
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+}
+/* 
+    .systems__container: حاوية بطاقات الأنظمة
+    تستخدم شبكة متجاوبة تلقائيًا
+*/
+
+.system__card { 
+  border-radius: 1rem; 
+  overflow: hidden; 
+  position: relative; 
+  background-color: var(--container-color); 
+  box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .08); 
+  transition: transform .4s ease, box-shadow .4s ease; 
+}
+/* 
+    .system__card: بطاقة نظام واحدة
+    تتميز بزوايا دائرية وظل ناعم
+*/
+
+.system__card:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 12px 32px hsla(var(--hue), 30%, 10%, .12); 
+}
+/* 
+    .system__card:hover: تأثير عند التمرير على البطاقة
+    لرفعها وتكثيف ظلها
+*/
+
+.system__image { position: relative; height: 250px; }
+/* 
+    .system__image: حاوية الصورة في البطاقة
+*/
+
+.system__image img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform .4s ease; 
+}
+/* 
+    .system__image img: الصورة داخل البطاقة
+    تملأ الحاوية بالكامل مع تأثير تكبير عند التمرير
+*/
+
+.system__card:hover .system__image img { 
+  transform: scale(1.08); 
+}
+/* 
+    تأثير تكبير الصورة عند التمرير على البطاقة
+*/
+
+.system__trial-badge { 
+  position: absolute; 
+  top: 1rem; 
+  left: 1rem; 
+  background: hsla(var(--hue), 80%, 30%, 0.8); 
+  backdrop-filter: blur(5px); 
+  color: #FFF; 
+  padding: .5rem 1rem; 
+  border-radius: .5rem; 
+  font-size: var(--small-font-size); 
+  font-weight: var(--font-bold); 
+}
+/* 
+    .system__trial-badge: شارة التجربة المجانية
+    تظهر فوق صورة النظام
+*/
+
+.system__data { 
+  padding: 1.5rem; 
+  background-color: var(--container-color); 
+}
+/* 
+    .system__data: حاوية البيانات النصية أسفل الصورة
+*/
+
+.system__title { 
+  font-size: var(--h2-font-size); 
+  margin-bottom: .5rem; 
+}
+/* 
+    .system__title: عنوان النظام
+*/
+
+.system__description { 
+  margin-bottom: 1.5rem; 
+  min-height: 50px; 
+}
+/* 
+    .system__description: وصف النظام
+    مع ارتفاع أدنى لتوحيد شكل البطاقات
+*/
+
+.system__buttons { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+/* 
+    .system__buttons: حاوية الأزرار في البطاقة
+*/
+
+/*=============== CONTACT & OTHERS ===============*/
+/* 
+    أنماط قسم التواصل، التذييل، والعناصر الأخرى
+*/
+
+.contact { 
+  background: var(--gradient-color); 
+  padding: 6rem 0; 
+  text-align: center; 
+}
+/* 
+    .contact: قسم التواصل
+    يتميز بخلفية متدرجة ومحتوى مركزي
+*/
+
+.contact__container { max-width: 700px; }
+/* 
+    .contact__container: حاوية المحتوى
+    بعرض أضيق لتركيز المحتوى
+*/
+
+.contact .section__title, .contact .contact__description { 
+  color: #FFF; 
+}
+/* 
+    تغيير لون العنوان والوصف إلى الأبيض
+    ليكون واضحًا على الخلفية المتدرجة
+*/
+
+.contact .section__title { margin-bottom: 1rem; }
+/* 
+    تغيير مسافة العنوان داخل قسم التواصل
+*/
+
+.contact__description { 
+  margin-bottom: 2.5rem; 
+  opacity: .9; 
+  line-height: 1.7; 
+}
+/* 
+    .contact__description: وصف التواصل
+*/
+
+.contact__buttons { 
+  display: flex; 
+  justify-content: center; 
+  gap: 1rem; 
+  flex-wrap: wrap; 
+}
+/* 
+    .contact__buttons: حاوية أزرار التواصل
+*/
+
+.contact__buttons .button { 
+  display: flex; 
+  align-items: center; 
+  gap: .5rem; 
+  font-size: 1.1rem; 
+  padding: 1.1rem 2rem; 
+}
+/* 
+    تنسيق خاص لأزرار التواصل
+    لإضافة أيقونات ومسافات
+*/
+
+.contact__buttons .button--ghost { 
+  border-color: #FFF; 
+  color: #FFF; 
+  background: transparent; 
+}
+/* 
+    تخصيص الزر الشفاف داخل قسم التواصل
+*/
+
+.contact__buttons .button--ghost:hover { 
+  background-color: #FFF; 
+  color: var(--first-color); 
+}
+/* 
+    تأثير التمرير للزر الشفاف في قسم التواصل
+*/
+
+.footer { 
+  background-color: hsl(var(--hue), 25%, 20%); 
+  padding: 2rem 0; 
+}
+/* 
+    .footer: تذييل الصفحة
+    يتميز بخلفية داكنة
+*/
+
+.footer__copy { 
+  text-align: center; 
+  color: hsl(var(--hue), 25%, 85%); 
+  font-size: var(--small-font-size); 
+}
+/* 
+    .footer__copy: نص حقوق النشر
+*/
+
+.whatsapp__button { 
+  position: fixed; 
+  bottom: 2rem; 
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%; 
+  background-color: #25D366; 
+  display: grid; 
+  place-items: center; 
+  box-shadow: 0 4px 12px hsla(145, 63%, 42%, .3); 
+  z-index: var(--z-fixed); 
+  transition: transform .3s; 
+}
+/* 
+    .whatsapp__button: زر واتساب العائم
+    يتم تثبيته في أسفل الشاشة
+*/
+
+html[dir="rtl"] .whatsapp__button { right: 2rem; }
+/* 
+    تحديد موقع زر واتساب في الجهة اليمنى للصفحات العربية
+*/
+
+.whatsapp__button:hover { 
+  transform: scale(1.1) rotate(10deg); 
+}
+/* 
+    .whatsapp__button:hover: تأثير حركة عند التمرير
+*/
+
+.whatsapp__button i { 
+  font-size: 2.5rem; 
+  color: white; 
+}
+/* 
+    .whatsapp__button i: أيقونة واتساب داخل الزر
+*/
+
+/*=============== MODAL (ULTIMATE & INTEGRATED) ===============*/
+/* 
+    أنماط النوافذ المنبثقة (Modals)
+*/
+
+.details__modal { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background-color: hsla(var(--hue), 30%, 10%, .5); 
+  z-index: var(--z-modal); 
+  opacity: 0; 
+  visibility: hidden; 
+  transition: opacity .3s, visibility .3s; 
+  backdrop-filter: blur(8px); 
+  overflow-y: auto; 
+  padding: 2rem 1rem; 
+  display: grid; 
+  place-items: center; 
+}
+/* 
+    .details__modal: النافذة المنبثقة (الخلفية)
+    تغطي كامل الشاشة وتكون مخفية بشكل افتراضي
+*/
+
+.details__modal-content { 
+  position: relative; 
+  background-color: var(--body-color); 
+  border-radius: 1rem; 
+  max-width: 850px; 
+  width: 100%; 
+  padding: 2rem; 
+  transform: scale(0.95); 
+  transition: transform 0.4s ease, opacity 0.4s ease; 
+  opacity: 0; 
+}
+/* 
+    .details__modal-content: محتوى النافذة
+    يظهر في المنتصف ويكون مخفيًا مع تأثير انتقال
+*/
+
+.details__modal-close { 
+  position: absolute; 
+  top: 1rem; 
+  left: 1rem; 
+  font-size: 1.5rem; 
+  color: var(--text-color-light); 
+  background: var(--first-color-lighten); 
+  border-radius: 50%; 
+  width: 36px; 
+  height: 36px; 
+  display: grid; 
+  place-items: center; 
+  transition: background-color .3s; 
+}
+/* 
+    .details__modal-close: زر إغلاق النافذة
+*/
+
+.details__modal-close:hover { 
+  background-color: hsl(var(--hue), 30%, 90%); 
+}
+/* 
+    .details__modal-close:hover: تأثير عند التمرير
+*/
+
+.show-modal { 
+  opacity: 1; 
+  visibility: visible; 
+}
+/* 
+    .show-modal: فئة لإظهار النافذة
+    تضاف عبر JavaScript
+*/
+
+.show-modal .details__modal-content { 
+  transform: scale(1); 
+  opacity: 1; 
+}
+/* 
+    تأثير ظهور محتوى النافذة عند إضافة فئة .show-modal
+*/
+
+.details__modal-title { 
+  text-align: center; 
+  font-size: var(--h2-font-size); 
+  margin-bottom: 2rem; 
+  font-weight: var(--font-black); 
+}
+/* 
+    .details__modal-title: عنوان النافذة المنبثقة
+*/
+
+.modal__comparison-grid { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 1.5rem; 
+}
+/* 
+    .modal__comparison-grid: شبكة المقارنة داخل النافذة
+*/
+
+.modal__version-card { 
+  border: 1px solid var(--border-color); 
+  border-radius: .75rem; 
+  display: flex; 
+  flex-direction: column; 
+  background-color: var(--container-color); 
+}
+/* 
+    .modal__version-card: بطاقة نسخة واحدة (عادية أو احترافية)
+*/
+
+.version__header { 
+  padding: 1rem; 
+  border-bottom: 1px solid var(--border-color); 
+  text-align: center; 
+}
+/* 
+    .version__header: رأس بطاقة النسخة
+    يحتوي على العنوان والسعر
+*/
+
+.version__title { 
+  font-size: var(--h3-font-size); 
+  font-weight: var(--font-bold); 
+  margin-bottom: .25rem; 
+}
+/* 
+    .version__title: عنوان النسخة (عادية/احترافية)
+*/
+
+.version__price { 
+  font-size: 1.75rem; 
+  font-weight: var(--font-black); 
+  color: var(--first-color); 
+  margin-bottom: .25rem; 
+}
+/* 
+    .version__price: سعر النسخة
+*/
+
+.version__target { 
+  font-size: var(--small-font-size); 
+  color: var(--text-color-light); 
+}
+/* 
+    .version__target: النص المستهدف (لجهاز واحد/للخادم)
+*/
+
+.version__features { 
+  padding: 1.5rem; 
+  flex-grow: 1; 
+}
+/* 
+    .version__features: قائمة ميزات النسخة
+*/
+
+.version__features li { 
+  display: flex; 
+  align-items: center; 
+  gap: .75rem; 
+  margin-bottom: .75rem; 
+}
+/* 
+    .version__features li: عنصر واحد في قائمة الميزات
+*/
+
+.version__features i { 
+  font-size: 1.25rem; 
+  color: var(--first-color); 
+}
+/* 
+    .version__features i: أيقونة الميزة (صح/خطأ)
+*/
+
+.feature--disabled { 
+  color: var(--text-color-light); 
+}
+/* 
+    .feature--disabled: فئة للميزة غير المتوفرة
+*/
+
+.feature--disabled i { 
+  color: var(--text-color-light); 
+}
+/* 
+    تغيير لون أيقونة الميزة غير المتوفرة
+*/
+
+.version__footer { 
+  padding: 1.5rem; 
+  border-top: 1px solid var(--border-color); 
+  text-align: center; 
+}
+/* 
+    .version__footer: تذييل بطاقة النسخة
+    يحتوي على المواصفات وزر التحميل
+*/
+
+.version__specs { 
+  font-size: var(--smaller-font-size); 
+  color: var(--text-color-light); 
+  margin-bottom: 1rem; 
+}
+/* 
+    .version__specs: مواصفات النظام المطلوبة
+*/
+
+.modal__download-button { 
+  width: 100%; 
+  text-align: center; 
+  justify-content: center; 
+}
+/* 
+    .modal__download-button: زر التحميل داخل النافذة
+*/
+
+.modal__version-card.pro { 
+  border-color: transparent; 
+  position: relative; 
+}
+/* 
+    .modal__version-card.pro: تنسيق خاص لبطاقة النسخة الاحترافية
+*/
+
+.modal__version-card.pro .version__header { 
+  background: var(--gradient-color); 
+  color: white; 
+  border-radius: .75rem .75rem 0 0; 
+}
+/* 
+    تغيير رأس بطاقة النسخة الاحترافية
+    لتمييزها بخلفية متدرجة
+*/
+
+.modal__version-card.pro .version__title, 
+.modal__version-card.pro .version__price, 
+.modal__version-card.pro .version__target { 
+  color: white; 
+}
+/* 
+    تغيير ألوان النصوص داخل رأس النسخة الاحترافية
+*/
+
+.modal__version-card.pro .button { 
+  background: var(--gradient-color); 
+  color: white; 
+}
+/* 
+    تغيير زر التحميل في النسخة الاحترافية
+    ليكون بخلفية متدرجة ونص أبيض
+*/
+
+.modal__extra-note { 
+  text-align: center; 
+  margin-top: 2rem; 
+  font-size: var(--small-font-size); 
+  background-color: hsl(var(--hue), 60%, 95%); 
+  padding: .75rem; 
+  border-radius: .5rem; 
+}
+/* 
+    .modal__extra-note: ملاحظة إضافية أسفل المقارنة
+*/
+
+/*=============== MEDIA QUERIES (CORRECT ORDER) ===============*/
+/* 
+    استعلامات الوسائط (Media Queries)
+    لتصميم الاستجابة (Responsive Design)
+*/
+
+@media screen and (max-width: 992px) { 
+  .nav__menu { display: none; } 
+}
+/* 
+    @media screen and (max-width: 992px): عند عرض الشاشة بعرض 992px أو أقل
+    .nav__menu { display: none; }: إخفاء قائمة التنقل (لإظهار قائمة الهامبرغر لاحقًا)
+*/
+
+/* For medium devices and up */
+/* 
+    للأجهزة المتوسطة والكبيرة (768px فأكثر)
+*/
+
+@media screen and (min-width: 768px) {
+  .feature__item {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* 
+      .feature__item: تغيير تخطيط قسم الميزات
+      grid-template-columns: 1fr 1fr: عرض المحتوى والصورة في عمودين
+  */
+  
+  .feature__item:nth-child(2) .feature__image {
+    order: -1;
+  }
+  /* 
+      .feature__item:nth-child(2) .feature__image: تغيير ترتيب الصورة في الميزة الثانية
+      order: -1: يجعل الصورة تظهر أولاً (على اليمين في RTL)
+  */
+  
+  .modal__comparison-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* 
+      .modal__comparison-grid: تغيير شبكة المقارنة داخل النافذة
+      grid-template-columns: 1fr 1fr: عرض النسختين في عمودين
+  */
+}
+
+/* For large devices */
+/* 
+    للأجهزة الكبيرة (1024px فأكثر)
+*/
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.5rem;
+  }
+  /* 
+      :root: تغيير المتغيرات لزيادة حجم الخطوط على الشاشات الكبيرة
+  */
+}
