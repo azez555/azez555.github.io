@@ -112,7 +112,6 @@ button {
     لتوحيد مظهرها عبر المتصفحات
 */
 
-/*=============== REUSABLE CSS CLASSES ===============*/
 /* 
     فئات قابلة لإعادة الاستخدام
     لتطبيق أنماط متكررة بسهولة
@@ -203,15 +202,9 @@ button {
     .button-link: فئة لتصميم رابط نصي يشبه الزر
 */
 
-.button-link:hover { letter-spacing: .5px; }
-/* 
-    .button-link:hover: تأثير عند التمرير
-    لزيادة المسافة بين الحروف
-*/
 
-/*=============== HEADER ===============*/
 /* 
-    أنماط الشريط العلوي (Header) وقائمة التنقل
+  ------  أنماط الشريط العلوي (Header) وقائمة التنقل-     -------
 */
 
 .header { 
@@ -246,7 +239,6 @@ button {
   color: var(--container-color); 
   font-weight: var(--font-bold); 
   font-size: 1.5rem; 
-  transition: color 0.4s; 
 }
 /* 
     .nav__logo: شعار الموقع
@@ -312,9 +304,8 @@ button {
     تغيير لون الرابط النشط في حالة الهيدر المتغير
 */
 
-/*=============== POINT (HERO SECTION) ===============*/
 /* 
-    أنماط قسم الترحيب الرئيسي (Hero Section)
+    أنماط قسم الترحيب الرئيسي (Section)
 */
 
 .point { 
@@ -363,7 +354,6 @@ button {
     .point__description strong: تمييز النص المهم داخل الوصف
 */
 
-/*=============== FEATURES ===============*/
 /* 
     أنماط قسم الميزات
 */
@@ -433,7 +423,6 @@ button {
     تتميز بزوايا دائرية وظل عميق
 */
 
-/*=============== SYSTEMS ===============*/
 /* 
     أنماط قسم الأنظمة
 */
@@ -495,25 +484,16 @@ button {
 }
 
 .system__card {
-  /* 1: السماح للبطاقة بالتمدد لتملأ الصف */
   flex: 1 1 320px; 
-  
-  /* 2: وضع حد أقصى للحجم لكي لا تصبح ضخمة إذا كانت وحيدة */
-  /* يمكنك زيادة الرقم 450px أو نقصه حسب الحجم الذي تراه مناسباً */
   max-width: 450px; 
-
-  /* التنسيقات الأخرى */
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
   background-color: var(--container-color);
   box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .08);
-  
-  /* ملاحظة: تأكد من إزالة أي transition للـ transform من هنا */
   transition: box-shadow .4s ease; 
 }
 
-/* تأثير الـ Hover بشكل منفصل لمنع اهتزاز الفلترة */
 .system__card:hover {
   transform: translateY(-8px);
 }
@@ -596,7 +576,6 @@ button {
     .system__buttons: حاوية الأزرار في البطاقة
 */
 
-/*=============== CONTACT & OTHERS ===============*/
 /* 
     أنماط قسم التواصل، التذييل، والعناصر الأخرى
 */
@@ -632,7 +611,6 @@ button {
 
 .contact__description { 
   margin-bottom: 2.5rem; 
-  opacity: .9; 
   line-height: 1.7; 
 }
 /* 
@@ -734,7 +712,6 @@ html[dir="rtl"] .whatsapp__button { right: 2rem; }
     .whatsapp__button i: أيقونة واتساب داخل الزر
 */
 
-/*=============== MODAL (ULTIMATE & INTEGRATED) ===============*/
 /* 
     أنماط النوافذ المنبثقة (Modals)
 */
@@ -789,7 +766,6 @@ html[dir="rtl"] .whatsapp__button { right: 2rem; }
   height: 36px; 
   display: grid; 
   place-items: center; 
-  transition: background-color .3s; 
 }
 /* 
     .details__modal-close: زر إغلاق النافذة
@@ -1002,7 +978,6 @@ html[dir="rtl"] .whatsapp__button { right: 2rem; }
     .modal__extra-note: ملاحظة إضافية أسفل المقارنة
 */
 
-/*=============== MEDIA QUERIES (CORRECT ORDER) ===============*/
 /* 
     استعلامات الوسائط (Media Queries)
     لتصميم الاستجابة (Responsive Design)
@@ -1014,7 +989,7 @@ html[dir="rtl"] .whatsapp__button { right: 2rem; }
 /* 
     @media screen and (max-width: 992px): عند عرض الشاشة بعرض 992px أو أقل
     .nav__menu { display: none; }: إخفاء قائمة التنقل (لإظهار قائمة الهامبرغر لاحقًا)
-*/
+
 
 /* For medium devices and up */
 /* 
@@ -1083,14 +1058,6 @@ i,
 .button, 
 .modal__close {
     cursor: pointer !important;
-}
-
-/* استثناء: السماح بتحديد النصوص في المقالات أو الأوصاف الطويلة */
-
-.system__description, .modal__description {
-    user-select: text;
-    -webkit-user-select: text;
-    cursor: auto;
 }
 
 

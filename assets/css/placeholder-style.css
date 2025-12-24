@@ -1,10 +1,8 @@
-/*=============== GOOGLE FONTS ===============*/
 /* 
     @import: استيراد خط Tajawal من Google Fonts
 */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap' );
 
-/*=============== VARIABLES ===============*/
 /* 
     :root:
     عنصر الجذر الذي يحتوي على المتغيرات العالمية
@@ -22,13 +20,18 @@
     --font-black: 900;
 }
 
-/*=============== BASE ===============*/
 /* 
     تنسيقات أساسية لجسم الصفحة (body)
     تحدد الخط، الخلفية، وتوسيط المحتوى
 */
 body {
     font-family: var(--body-font);
+/* 
+    background: linear-gradient: إنشاء خلفية متدرجة
+    160deg: تحديد زاوية التدرج لتكون مائلة
+    اللون الأول: أزرق داكن (سطوع 25%)
+    اللون الثاني: أزرق أكثر قتامة وحيوية (سطوع 15%، تشبع 80%)
+*/
     background: linear-gradient(160deg, hsl(var(--hue), 50%, 25%, .98), hsl(var(--hue), 80%, 15%, .99));
     color: #FFF;
     display: grid;
@@ -39,7 +42,6 @@ body {
     padding: 1rem;
 }
 
-/*=============== CONTAINER ===============*/
 /* 
     .container:
     حاوية المحتوى الرئيسية في وسط الصفحة
@@ -75,7 +77,6 @@ p {
     opacity: 0.8;
 }
 
-/*=============== BUTTON ===============*/
 /* 
     .button:
     فئة الزر الرئيسي للعودة للصفحة الرئيسية

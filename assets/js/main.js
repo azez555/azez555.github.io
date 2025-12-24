@@ -164,13 +164,6 @@
         if (e.target === mv) closeModal();
       })
     );
-
-    /* 
-        3. الضغط على مفتاح Escape
-    */
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
   };
 
   /*
@@ -193,11 +186,6 @@
     sr.reveal(".point__data");
     sr.reveal(".feature__item", { interval: 200 });
     sr.reveal(".systems__filters", { delay: 300 });
-
-    // --- هذا السطر هو سبب المشكلة، قم بحذفه أو جعله تعليقاً ---
-    // sr.reveal(".system__card", { interval: 150 });
-    // --------------------------------------------------------
-
     sr.reveal(".contact__container");
   };
   /*
